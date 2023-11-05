@@ -19,7 +19,7 @@ public class StreamController {
     @RequestMapping(value = "/{device}/{base64}", method = RequestMethod.GET)
     public void redirect(@PathVariable("device") String device, @PathVariable("base64") String base64, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
-        String url = new String(Base64.getDecoder().decode(base64));
+        String url = new String(Base64.getDecoder().decode(base64.replace("*","/")));
 
         log.info(device);
         log.info(url);
